@@ -13,5 +13,5 @@ public interface UserService {
     /**
      * 测试用 没有实际意义
      */
-    List<User> queryUser();
+    User queryUser(String username);
 }

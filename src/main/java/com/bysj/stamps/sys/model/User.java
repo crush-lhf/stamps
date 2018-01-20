@@ -1,5 +1,7 @@
 package com.bysj.stamps.sys.model;
 
+import java.util.List;
+
 /**
  * @author lihf
  * @version 1.0
@@ -18,6 +20,25 @@ public class User {
      * 密码
      */
     private String password;
+
+    private List<Role> roles;
+    private List<Resource> resources;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Resource> getResources() {
+        return resources;
+    }
+
+    public void setResources(List<Resource> resources) {
+        this.resources = resources;
+    }
 
     public Integer getId() {
         return id;

@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private SysUserDao sysUserDao;
     @Override
-    public List<User> queryUser() {
-        return this.sysUserDao.queryUser();
+    public User queryUser(String username) {
+        return this.sysUserDao.queryUser(username);
     }
 }

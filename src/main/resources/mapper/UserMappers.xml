@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bysj.stamps.sys.dao.SysUserDao">
-	<select id="queryUser" resultType="com.bysj.stamps.sys.model.User">
-		SELECT t.username,t.password FROM USER t
+    <resultMap type="com.bysj.stamps.sys.model.User" id="userMap">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <collection property="roles" ofType="com.bysj.stamps.sys.model.Role">
+            <result property="roleName" column="rolename"/>
+            <collection property="resources" ofType="com.bysj.stamps.sys.model.Resource">
+                <id property="url" column="url"/>
+                <result property="resource" column="resourceCN"/>
+                <result property="status" column="status"/>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="queryUser" resultMap="userMap">
+		SELECT
+	u.*, r.rolename,
+	m.url,
+	m.resourceCN,
+	m. STATUS
+FROM
+	USER u
+LEFT JOIN role_user ur ON ur.role_user = u.id
+LEFT JOIN role r ON r.id = ur.id
+LEFT JOIN role_resoure mr ON mr.role_resoure = r.id
+LEFT JOIN resource m ON mr.id = m.id
+WHERE
+	username = #{username}
 	</select>
 
 </mapper>
