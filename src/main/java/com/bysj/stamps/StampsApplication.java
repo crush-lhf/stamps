@@ -8,6 +8,10 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * @author crush
+ * 启动类
+ */
 @SpringBootApplication
 @Controller
 @MapperScan(basePackages = "com.bysj.stamps.*.dao")
